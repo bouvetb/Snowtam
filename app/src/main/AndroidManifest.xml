@@ -14,6 +14,10 @@
             android:enabled="true"
             android:exported="true"></service>
 
+        <activity
+            android:name=".Accueil"
+            android:label="@string/title_activity_accueil"
+            android:theme="@style/Theme.SnowTam.NoActionBar"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
