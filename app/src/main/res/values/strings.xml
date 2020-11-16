@@ -12,4 +12,7 @@
     <string name="menu_gallery">Help</string>
     <string name="menu_slideshow">Historic</string>
     <string name="textViewConsigne"> Please enter IOCA codes then press validate </string>
+    <string name="title_activity_affsnowtam">Affsnowtam</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
