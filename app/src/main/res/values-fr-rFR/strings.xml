@@ -14,4 +14,7 @@
     <string name="menu_gallery">Aide</string>
     <string name="menu_slideshow">Historique</string>
     <string name="textViewConsigne">Veuillez entrer des codes IOCA puis appuyer sur valider</string>
+    <string name="editTextIOCA">Code IOCA</string>
+    <string name="buttonValidate">Valider</string>
+    <string name="buttonAdd">Ajouter</string>
 </resources>

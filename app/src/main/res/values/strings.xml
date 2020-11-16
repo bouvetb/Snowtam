@@ -15,4 +15,7 @@
     <string name="title_activity_affsnowtam">Affsnowtam</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="editTextIOCA">IOCA code</string>
+    <string name="buttonValidate">Validate</string>
+    <string name="buttonAdd">Add</string>
 </resources>
