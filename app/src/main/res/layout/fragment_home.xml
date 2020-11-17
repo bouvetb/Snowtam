@@ -43,29 +43,26 @@
         app:layout_constraintVertical_bias="0.976" />
 
     <ListView
-        android:id="@android:id/list"
-        android:layout_width="290dp"
-        android:layout_height="270dp"
+        android:id="@+id/listCodeIOCA"
+        android:layout_width="301dp"
+        android:layout_height="269dp"
         android:drawSelectorOnTop="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605"></ListView>
+        app:layout_constraintVertical_bias="0.837"></ListView>
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="308dp"
         android:text="@string/buttonAdd"
-        app:layout_constraintBottom_toTopOf="@+id/buttonValidate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974"
-        android:onClick="addItems"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
