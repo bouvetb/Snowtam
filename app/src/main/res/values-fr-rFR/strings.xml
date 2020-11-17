@@ -17,4 +17,9 @@
     <string name="editTextIOCA">Code IOCA</string>
     <string name="buttonValidate">Valider</string>
     <string name="buttonAdd">Ajouter</string>
+    <string name="title_activity_affsnowtam">Affsnowtam</string>
+    <string name="tab_text_1">codé</string>
+    <string name="tab_text_2">décodé</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_affariport">Map</string>
 </resources>
