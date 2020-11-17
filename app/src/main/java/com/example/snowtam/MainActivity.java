@@ -13,8 +13,7 @@ import com.example.snowtam.Model.DataSearchSnow;
 import com.example.snowtam.Model.SnowTam;
 
 public class MainActivity extends AppCompatActivity {
-    private String snowtam;
-    private String airport;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
