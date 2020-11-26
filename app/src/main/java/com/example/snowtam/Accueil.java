@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +37,7 @@ public class Accueil extends AppCompatActivity {
         Button Add = (Button) findViewById(R.id.buttonAdd);
         ListView list = (ListView) findViewById(R.id.listCodeIOCA);
         EditText CodeIOCA = (EditText) findViewById(R.id.editTextIOCA);
+        CodeIOCA.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         ArrayList<String> arrayList = new ArrayList<String>();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
         list.setAdapter(adapter);
@@ -45,9 +47,12 @@ public class Accueil extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                arrayList.add(CodeIOCA.getText().toString());
-                adapter.notifyDataSetChanged();
-                CodeIOCA.setText("");
+                if (!CodeIOCA.getText().toString().equals(""))
+                {
+                    arrayList.add(CodeIOCA.getText().toString());
+                    adapter.notifyDataSetChanged();
+                    CodeIOCA.setText("");
+                }
             }
         });
         Button validate = (Button) findViewById(R.id.buttonValidate);
