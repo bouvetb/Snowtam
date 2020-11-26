@@ -20,8 +20,8 @@
 
     <EditText
         android:id="@+id/editTextIOCA"
-        android:layout_width="158dp"
-        android:layout_height="52dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_below="@id/textViewConsigne"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -48,7 +48,7 @@
     <ListView
         android:id="@+id/listCodeIOCA"
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/buttonAdd"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -69,12 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextIOCA"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginEnd="156dp"
         android:text="@string/buttonAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

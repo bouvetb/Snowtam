@@ -3,6 +3,7 @@ package com.example.snowtam;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -47,6 +48,16 @@ public class Accueil extends AppCompatActivity {
                 arrayList.add(CodeIOCA.getText().toString());
                 adapter.notifyDataSetChanged();
                 CodeIOCA.setText("");
+            }
+        });
+        Button validate = (Button) findViewById(R.id.buttonValidate);
+        validate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Accueil.this,Affsnowtam.class);
+                i.putExtra("List",arrayList);
+                i.putExtra("id",0);
+                startActivity(i);
             }
         });
 
