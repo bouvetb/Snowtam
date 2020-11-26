@@ -13,9 +13,12 @@
     <string name="menu_slideshow">Historic</string>
     <string name="textViewConsigne"> Please enter IOCA codes then press validate </string>
     <string name="title_activity_affsnowtam">Affsnowtam</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">coded</string>
+    <string name="tab_text_2">decoded</string>
     <string name="editTextIOCA">IOCA code</string>
     <string name="buttonValidate">Validate</string>
     <string name="buttonAdd">Add</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_affariport">Map</string>
 </resources>
