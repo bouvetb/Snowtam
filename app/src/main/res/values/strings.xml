@@ -38,4 +38,8 @@
         R) - apron\n
         S) - next planned observation/measurement\n
         T) - plain-language remarks </string>
+    <string name="Accueil">Home</string>
+    <string name="Help">Help</string>
+    <string name="Historic">Historic</string>
+
 </resources>

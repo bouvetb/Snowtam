@@ -39,4 +39,7 @@
                             R) - tablier \n
                             S) - prochaine observation / mesure prévue \n
                             T) - remarques en langage clair </string>
+    <string name="Accueil">Accueil</string>
+    <string name="Help">Aide</string>
+    <string name="Historic">Historique</string>
 </resources>
