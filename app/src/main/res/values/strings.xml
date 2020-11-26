@@ -21,6 +21,23 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_affariport">Map</string>
+    <string name="help"> A) - aerodrome location indicator\n
+        B) - observation date and time\n
+        C) - runway designator\n
+        D) - cleared runway length\n
+        E) - cleared runway width\n
+        F) - deposits over total runway length\n
+        G) - mean depth deposit for each third of total runway length\n
+        H) - friction measurements and friction measurement device\n
+        J) - critical snowbanks\n
+        K) - runway lights\n
+        L) - further clearance\n
+        M) - further clearance expected to be completed (UTC)\n
+        N) - taxiway\n
+        P) - taxiway snowbanks\n
+        R) - apron\n
+        S) - next planned observation/measurement\n
+        T) - plain-language remarks </string>
     <string name="Accueil">Home</string>
     <string name="Help">Help</string>
     <string name="Historic">Historic</string>

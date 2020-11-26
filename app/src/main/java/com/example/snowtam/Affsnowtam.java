@@ -71,7 +71,7 @@ public class Affsnowtam extends AppCompatActivity {
                 super.onSwipeLeft();
                 if(Index != aero.size()-1){
                     Intent i = new Intent(Affsnowtam.this,Affsnowtam.class);
-                    i.putExtra("Liste",aero);
+                    i.putExtra("List",aero);
                     i.putExtra("id",Index+1);
                     startActivity(i);
                 }else {
@@ -86,7 +86,7 @@ public class Affsnowtam extends AppCompatActivity {
                 super.onSwipeRight();
                 if(Index !=0){
                     Intent i = new Intent(Affsnowtam.this,Affsnowtam.class);
-                    i.putExtra("Liste",aero);
+                    i.putExtra("List",aero);
                     i.putExtra("id",Index-1);
                     startActivity(i);
                 }else{

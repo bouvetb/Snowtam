@@ -1,8 +1,10 @@
 package com.example.snowtam;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -30,8 +32,22 @@ public class Accueil extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getTitle().equals("Aide")){
-                    Toast.makeText(Accueil.this,"aide",Toast.LENGTH_LONG).show();
+                if(item.getTitle().equals(getString(R.string.Help)))
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Accueil.this);
+                    builder.setTitle(getString(R.string.Help));
+                    builder.setMessage(getString(R.string.help));
+                    builder.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
                 }
                 return false;
             }

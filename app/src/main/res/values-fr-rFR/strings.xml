@@ -22,6 +22,23 @@
     <string name="tab_text_2">décodé</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_affariport">Map</string>
+    <string name="help">A) - indicateur d\'emplacement d\'aérodrome \n
+                            B) - date et heure d\'observation \n
+                            C) - indicateur de piste \n
+                            D) - longueur de piste dégagée \n
+                            E) - largeur de piste dégagée \n
+                            F) - dépôts sur la longueur totale de la piste \n
+                            G) - dépôt en profondeur moyen pour chaque tiers de la longueur totale de la piste \n
+                            H) - appareil de mesure du frottement et de mesure du frottement \n
+                            J) - bancs de neige critiques \n
+                            K) - feux de piste \n
+                            L) - autorisation supplémentaire \n
+                            M) - nouvelle autorisation devrait être achevée (UTC) \n
+                            N) - voie de circulation \n
+                            P) - bancs de neige de la voie de circulation \n
+                            R) - tablier \n
+                            S) - prochaine observation / mesure prévue \n
+                            T) - remarques en langage clair </string>
     <string name="Accueil">Accueil</string>
     <string name="Help">Aide</string>
     <string name="Historic">Historique</string>
