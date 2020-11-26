@@ -8,10 +8,12 @@ import com.example.snowtam.Model.DataSearchAirport;
 import com.example.snowtam.Model.DataSearchSnow;
 import com.example.snowtam.Model.Geometry;
 import com.example.snowtam.Model.SnowTam;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,17 +24,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.snowtam.ui.main.SectionsPagerAdapter;
+
 
 
 public class Affsnowtam extends AppCompatActivity {
     Geometry coord ;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affsnowtam);
         TextView tv = (TextView) findViewById(R.id.title);
+        bottomNavigationView= (BottomNavigationView) findViewById(R.id.nav_bot);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                return false;
+            }
+        });
         final Response.Listener<DataSearchAirport[]> rep =response -> {
             tv.setText(response[0].getAirportName());
             this.coord = response[0].getGeometry();

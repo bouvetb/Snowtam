@@ -1,24 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:context=".Accueil">
+    <TextView
+        android:id="@+id/textViewConsigne"
+        android:layout_width="279dp"
+        android:layout_height="65dp"
+        android:text="@string/textViewConsigne"
+        android:layout_above="@id/editTextIOCA"
+        android:layout_centerInParent="true"
+        />
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <EditText
+        android:id="@+id/editTextIOCA"
+        android:layout_width="158dp"
+        android:layout_height="52dp"
+        android:hint="@string/editTextIOCA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.316"
+        android:layout_above="@id/buttonAdd"
+        android:layout_centerInParent="true"/>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+    <Button
+        android:id="@+id/buttonValidate"
+        android:layout_width="108dp"
+        android:layout_height="37dp"
+        android:layout_above="@+id/nav_bot"
+        android:layout_centerHorizontal="true"
+        android:text="@string/buttonValidate"
+        />
+
+    <ListView
+        android:id="@+id/listCodeIOCA"
+        android:layout_width="301dp"
+        android:layout_height="269dp"
+        android:drawSelectorOnTop="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.837"
+        android:layout_above="@id/buttonValidate"
+        android:layout_centerInParent="true"></ListView>
+
+    <Button
+        android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
-</androidx.drawerlayout.widget.DrawerLayout>
+        android:layout_height="wrap_content"
+
+        android:text="@string/buttonAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" android:layout_above="@id/listCodeIOCA"
+        android:layout_centerInParent="true"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_bot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flow_verticalAlign="bottom"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</RelativeLayout>
