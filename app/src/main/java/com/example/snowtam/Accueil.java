@@ -47,6 +47,7 @@ public class Accueil extends AppCompatActivity {
             {
                 arrayList.add(CodeIOCA.getText().toString());
                 adapter.notifyDataSetChanged();
+                CodeIOCA.setText("");
             }
         });
 
