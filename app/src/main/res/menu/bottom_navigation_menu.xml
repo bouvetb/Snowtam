@@ -3,14 +3,14 @@
     <item
         android:id="@+id/action_android"
         android:enabled="true"
-        android:title="Accueil"
+        android:title="@string/Accueil"
         />
     <item
         android:id="@+id/action_logo"
         android:enabled="true"
-        android:title="Aide" />
+        android:title="@string/Help" />
     <item
         android:id="@+id/action_landscape"
         android:enabled="true"
-        android:title="Historique"/>
+        android:title="@string/Historic"/>
 </menu>
