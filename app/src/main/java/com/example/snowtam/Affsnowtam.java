@@ -23,8 +23,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
+import java.util.ArrayList;
 
 
 public class Affsnowtam extends AppCompatActivity {
@@ -43,6 +44,8 @@ public class Affsnowtam extends AppCompatActivity {
                 return false;
             }
         });
+        ArrayList<String> aero = getIntent().getStringArrayListExtra("Liste");
+        int Index = getIntent().getIntExtra("id",0);
         final Response.Listener<DataSearchAirport[]> rep =response -> {
             tv.setText(response[0].getAirportName());
             this.coord = response[0].getGeometry();
@@ -50,17 +53,47 @@ public class Affsnowtam extends AppCompatActivity {
         final Response.ErrorListener errorListener= error -> {
             Log.e("Error", "searchAirport onErrorResponse: " + error.getMessage());
         };
-        SnowTam.getAirport(this,getIntent().getStringExtra("airport"),rep,errorListener);
+        //SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
 
 
 
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),this,getIntent().getStringExtra("airport"));
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),this,aero.get(Index));
         Nsviewpager viewPager =(Nsviewpager) findViewById(R.id.view_pager);
         viewPager.setAdapter(pageAdapter);
         viewPager.setEnableSwipe(false);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
+
+        viewPager.setOnTouchListener(new OnSwypeTouchListener(this){
+            @Override
+            public void onSwipeLeft() {
+                super.onSwipeLeft();
+                if(Index != aero.size()-1){
+                    Intent i = new Intent(Affsnowtam.this,Affsnowtam.class);
+                    i.putExtra("Liste",aero);
+                    i.putExtra("id",Index+1);
+                    startActivity(i);
+                }else {
+                    Toast.makeText(Affsnowtam.this,"Impossible",Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+
+            @Override
+            public void onSwipeRight() {
+                super.onSwipeRight();
+                if(Index !=0){
+                    Intent i = new Intent(Affsnowtam.this,Affsnowtam.class);
+                    i.putExtra("Liste",aero);
+                    i.putExtra("id",Index-1);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(Affsnowtam.this,"Impossible",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
 
         fab.setOnClickListener(new View.OnClickListener() {
