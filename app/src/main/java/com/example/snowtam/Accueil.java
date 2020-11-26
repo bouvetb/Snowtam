@@ -32,11 +32,11 @@ public class Accueil extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getTitle().equals("Aide"))
+                if(item.getTitle().equals(getString(R.string.Help)))
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Accueil.this);
-                    builder.setTitle("Aide ");
-                    builder.setMessage(R.string.help);
+                    builder.setTitle(getString(R.string.Help));
+                    builder.setMessage(getString(R.string.help));
                     builder.setPositiveButton(
                             "OK",
                             new DialogInterface.OnClickListener() {
