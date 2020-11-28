@@ -4,43 +4,40 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.snowtam.Model.Injection;
 import com.example.snowtam.Model.Recherche;
+import com.example.snowtam.Model.RechercheAdapter;
 import com.example.snowtam.Model.RechercheVM;
 import com.example.snowtam.Model.VmFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Accueil extends AppCompatActivity {
+public class Historique extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     RechercheVM rechercheVM;
+    private RechercheAdapter adapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accueil);
+        setContentView(R.layout.activity_historique);
         bottomNavigationView= (BottomNavigationView) findViewById(R.id.nav_bot);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getTitle().equals(getString(R.string.Help)))
                 {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Accueil.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Historique.this);
                     builder.setTitle(getString(R.string.Help));
                     builder.setMessage(getString(R.string.help));
                     builder.setPositiveButton(
@@ -56,56 +53,34 @@ public class Accueil extends AppCompatActivity {
 
                 }
                 if(item.getTitle().equals(getString(R.string.Historic))){
-                    Intent i = new Intent(Accueil.this,Historique.class);
+                    Intent i = new Intent(Historique.this,Historique.class);
                     startActivity(i);
                 }
                 return false;
             }
         });
-
-
-        Button Add = (Button) findViewById(R.id.buttonAdd);
-        ListView list = (ListView) findViewById(R.id.listCodeIOCA);
-        EditText CodeIOCA = (EditText) findViewById(R.id.editTextIOCA);
-        CodeIOCA.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-        ArrayList<String> arrayList = new ArrayList<String>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
-        list.setAdapter(adapter);
-
-        Add.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                if (!CodeIOCA.getText().toString().equals(""))
-                {
-                    arrayList.add(CodeIOCA.getText().toString());
-                    adapter.notifyDataSetChanged();
-                    CodeIOCA.setText("");
-                }
-            }
-        });
-        Button validate = (Button) findViewById(R.id.buttonValidate);
-        validate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Accueil.this,Affsnowtam.class);
-                i.putExtra("List",arrayList);
-                i.putExtra("id",0);
-                Gson gson = new Gson();
-                java.util.Date date = new java.util.Date();
-
-                Recherche r = new Recherche(date.toString(),gson.toJson(arrayList));
-                rechercheVM.createRecherche(r);
-
-
-
-                startActivity(i);
-            }
-        });
         this.configureVM();
+        ArrayList<Recherche> recherches = new ArrayList<Recherche>();
+        listView = (ListView) findViewById(R.id.list_recherches);
+        adapter = new RechercheAdapter(this,recherches);
+        listView.setAdapter(adapter);
+        this.rechercheVM.getRecherches().observe(this,this::updateList);
 
 
+
+
+    }
+
+    private void updateList(List<Recherche> recherches) {
+        if(adapter == null){
+            adapter = new RechercheAdapter(this,new ArrayList<>(recherches));
+            listView.setAdapter(adapter);
+        }
+        else{
+            adapter.clear();
+            adapter.addAll(recherches);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private void configureVM(){

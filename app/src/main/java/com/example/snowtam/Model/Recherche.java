@@ -4,11 +4,23 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.sql.Date;
+import java.util.ArrayList;
+
 @Entity
 public class Recherche {
     @PrimaryKey(autoGenerate = true)
     private long id;
-    private Date date;
+    private String date;
+
+    public String getCodes() {
+        return codes;
+    }
+
+    public void setCodes(String codes) {
+        this.codes = codes;
+    }
+
+    private String codes;
 
     public Recherche() {
     }
@@ -21,16 +33,21 @@ public class Recherche {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Recherche(long id, Date date) {
+    public Recherche(long id, String date,String codes) {
         this.id = id;
         this.date = date;
+        this.codes = codes;
+    }
+    public Recherche(String date,String codes){
+        this.date = date;
+        this.codes = codes;
     }
 }
