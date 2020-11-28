@@ -1,5 +1,6 @@
 package com.example.snowtam;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.widget.NestedScrollView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +43,31 @@ public class Affsnowtam extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getTitle().equals(getString(R.string.Help)))
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Affsnowtam.this);
+                    builder.setTitle(getString(R.string.Help));
+                    builder.setMessage(getString(R.string.help));
+                    builder.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                }
+                if(item.getTitle().equals(getString(R.string.Accueil))){
+                    Intent i = new Intent(Affsnowtam.this,Accueil.class);
+                    startActivity(i);
+                }
+                if(item.getTitle().equals(getString(R.string.Historic))){
+                    Intent i = new Intent(Affsnowtam.this,Historique.class);
+                    startActivity(i);
+                }
                 return false;
             }
         });

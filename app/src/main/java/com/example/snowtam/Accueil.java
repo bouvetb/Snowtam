@@ -68,7 +68,13 @@ public class Accueil extends AppCompatActivity {
         ListView list = (ListView) findViewById(R.id.listCodeIOCA);
         EditText CodeIOCA = (EditText) findViewById(R.id.editTextIOCA);
         CodeIOCA.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-        ArrayList<String> arrayList = new ArrayList<String>();
+        ArrayList<String> arrayList;
+        if(getIntent().getStringExtra("recherches") == null) {
+            arrayList = new ArrayList<String>();
+        }else{
+            Gson gson = new Gson();
+            arrayList = (ArrayList<String>) gson.fromJson(getIntent().getStringExtra("recherches"),ArrayList.class);
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
         list.setAdapter(adapter);
 

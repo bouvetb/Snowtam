@@ -32,6 +32,7 @@ public class Historique extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historique);
         bottomNavigationView= (BottomNavigationView) findViewById(R.id.nav_bot);
+        bottomNavigationView.setSelectedItemId(R.id.action_landscape);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -51,6 +52,10 @@ public class Historique extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
 
+                }
+                if(item.getTitle().equals(getString(R.string.Accueil))){
+                    Intent i = new Intent(Historique.this,Accueil.class);
+                    startActivity(i);
                 }
                 if(item.getTitle().equals(getString(R.string.Historic))){
                     Intent i = new Intent(Historique.this,Historique.class);
