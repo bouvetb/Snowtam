@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,7 +68,9 @@ public class Accueil extends AppCompatActivity {
         Button Add = (Button) findViewById(R.id.buttonAdd);
         ListView list = (ListView) findViewById(R.id.listCodeIOCA);
         EditText CodeIOCA = (EditText) findViewById(R.id.editTextIOCA);
-        CodeIOCA.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        InputFilter[] filters = new InputFilter[1];
+        CodeIOCA.setFilters(new InputFilter[] { new InputFilter.AllCaps(), new InputFilter.LengthFilter(4)});
+
         ArrayList<String> arrayList;
         if(getIntent().getStringExtra("recherches") == null) {
             arrayList = new ArrayList<String>();
@@ -91,6 +94,19 @@ public class Accueil extends AppCompatActivity {
                 }
             }
         });
+
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                arrayList.remove(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+
+
+
         Button validate = (Button) findViewById(R.id.buttonValidate);
         validate.setOnClickListener(new View.OnClickListener() {
             @Override

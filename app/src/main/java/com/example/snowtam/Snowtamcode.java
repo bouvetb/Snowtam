@@ -46,12 +46,38 @@ public class Snowtamcode extends Fragment {
         View v = inflater.inflate(R.layout.fragment_snowtamcode, container, false);
         TextView tv = (TextView) v.findViewById(R.id.snowtamcode);
         final Response.Listener<DataSearchSnow[]> rep = response -> {
-            tv.setText(response[0].getAll());
+            //tv.setText(response[0].getAll());// affichage brut moche
+            tv.setText("");
+
+            String texte = response[0].getAll();
+            for(int i=65;i<=84;i++)
+            {
+                int j = i;
+                char lettre = (char)i;
+                int premier = texte.indexOf(lettre+") ");
+                int deuxieme;
+                do
+                {
+                    j++;
+                    if( j < 84 )
+                    {
+                        char lettreArret = (char)(j);
+                        deuxieme = texte.indexOf(lettreArret+")");
+                    }
+                    else
+                    {
+                        deuxieme = texte.indexOf("CREATED");
+                    }
+                }while(deuxieme == -1);
+                i = j-1;
+                String sub = texte.substring(premier, deuxieme);
+                tv.setText(tv.getText()+sub);
+            }
         };
         final Response.ErrorListener errorListener = error -> {
             Log.e("Erreur","erreur");
         };
-        //SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
+        SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
 
 
         return v;
