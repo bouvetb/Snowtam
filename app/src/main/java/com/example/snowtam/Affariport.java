@@ -42,6 +42,9 @@ public class Affariport extends FragmentActivity implements OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(geo.getCoordinates().get(1), geo.getCoordinates().get(0));
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in airport"));
+        mMap.setMinZoomPreference(14.0f);
+        mMap.setMapType(mMap.MAP_TYPE_SATELLITE);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
     }
 }

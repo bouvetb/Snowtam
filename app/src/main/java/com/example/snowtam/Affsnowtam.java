@@ -80,7 +80,7 @@ public class Affsnowtam extends AppCompatActivity {
         final Response.ErrorListener errorListener= error -> {
             Log.e("Error", "searchAirport onErrorResponse: " + error.getMessage());
         };
-        //SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
+        SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
 
 
 

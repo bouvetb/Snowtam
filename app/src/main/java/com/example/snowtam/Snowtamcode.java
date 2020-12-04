@@ -47,9 +47,18 @@ public class Snowtamcode extends Fragment {
         TextView tv = (TextView) v.findViewById(R.id.snowtamcode);
         final Response.Listener<DataSearchSnow[]> rep = response -> {
             //tv.setText(response[0].getAll());// affichage brut moche
-            tv.setText("");
 
-            String texte = response[0].getAll();
+            int y=0;
+            DataSearchSnow snow = null;
+            while(snow == null){
+                if(response[y].getEntity().equals("")){
+                   snow = response[y];
+                }
+                y++;
+            }
+
+            String texte = snow.getAll();
+            tv.setText(texte);
             for(int i=65;i<=84;i++)
             {
                 int j = i;
