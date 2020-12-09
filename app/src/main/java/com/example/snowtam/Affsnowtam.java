@@ -20,6 +20,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.AtomicFile;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,7 +83,7 @@ public class Affsnowtam extends AppCompatActivity {
         final Response.ErrorListener errorListener= error -> {
             Log.e("Error", "searchAirport onErrorResponse: " + error.getMessage());
         };
-        SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
+        //SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
 
 
 
@@ -104,7 +105,8 @@ public class Affsnowtam extends AppCompatActivity {
                     i.putExtra("id",Index+1);
                     startActivity(i);
                 }else {
-                    Toast.makeText(Affsnowtam.this,"Impossible",Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(Affsnowtam.this,Accueil.class);
+                    startActivity(i);
                 }
 
 
@@ -129,7 +131,7 @@ public class Affsnowtam extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 viewPager.setEnableSwipe(false);
-                Intent intent = new Intent(view.getContext(),Affariport.class);
+                Intent intent = new Intent(view.getContext(),AffMap.class);
                 intent.putExtra("coord",coord);
                 startActivity(intent);
 
