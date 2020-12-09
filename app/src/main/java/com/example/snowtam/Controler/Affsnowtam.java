@@ -1,4 +1,4 @@
-package com.example.snowtam;
+package com.example.snowtam.Controler;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -6,23 +6,21 @@ import android.os.Bundle;
 
 import com.android.volley.Response;
 import com.example.snowtam.Model.DataSearchAirport;
-import com.example.snowtam.Model.DataSearchSnow;
 import com.example.snowtam.Model.Geometry;
 import com.example.snowtam.Model.SnowTam;
+import com.example.snowtam.View.Nsviewpager;
+import com.example.snowtam.View.OnSwypeTouchListener;
+import com.example.snowtam.View.PageAdapter;
+import com.example.snowtam.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.widget.NestedScrollView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.AtomicFile;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -63,11 +61,11 @@ public class Affsnowtam extends AppCompatActivity {
 
                 }
                 if(item.getTitle().equals(getString(R.string.Accueil))){
-                    Intent i = new Intent(Affsnowtam.this,Accueil.class);
+                    Intent i = new Intent(Affsnowtam.this, Accueil.class);
                     startActivity(i);
                 }
                 if(item.getTitle().equals(getString(R.string.Historic))){
-                    Intent i = new Intent(Affsnowtam.this,Historique.class);
+                    Intent i = new Intent(Affsnowtam.this, Historique.class);
                     startActivity(i);
                 }
                 return false;
@@ -83,7 +81,7 @@ public class Affsnowtam extends AppCompatActivity {
         final Response.ErrorListener errorListener= error -> {
             Log.e("Error", "searchAirport onErrorResponse: " + error.getMessage());
         };
-        //SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
+        SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
 
 
 
@@ -131,7 +129,7 @@ public class Affsnowtam extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 viewPager.setEnableSwipe(false);
-                Intent intent = new Intent(view.getContext(),AffMap.class);
+                Intent intent = new Intent(view.getContext(), AffMap.class);
                 intent.putExtra("coord",coord);
                 startActivity(intent);
 

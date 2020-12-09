@@ -1,4 +1,4 @@
-package com.example.snowtam;
+package com.example.snowtam.Controler;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +16,7 @@ import com.example.snowtam.Model.Recherche;
 import com.example.snowtam.Model.RechercheAdapter;
 import com.example.snowtam.Model.RechercheVM;
 import com.example.snowtam.Model.VmFactory;
+import com.example.snowtam.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class Historique extends AppCompatActivity {
 
                 }
                 if(item.getTitle().equals(getString(R.string.Accueil))){
-                    Intent i = new Intent(Historique.this,Accueil.class);
+                    Intent i = new Intent(Historique.this, Accueil.class);
                     startActivity(i);
                 }
                 if(item.getTitle().equals(getString(R.string.Historic))){

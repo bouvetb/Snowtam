@@ -1,4 +1,4 @@
-package com.example.snowtam;
+package com.example.snowtam.Controler;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.example.snowtam.Model.DataSearchSnow;
 import com.example.snowtam.Model.SnowTam;
+import com.example.snowtam.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -180,7 +181,7 @@ public class Snowtamdecode extends Fragment {
         final Response.ErrorListener errorListener = error -> {
             Log.e("Erreur","erreur");
         };
-       // SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
+       SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
         return v;
     }
 }

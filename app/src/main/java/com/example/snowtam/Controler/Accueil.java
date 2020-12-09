@@ -1,10 +1,9 @@
-package com.example.snowtam;
+package com.example.snowtam.Controler;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +21,7 @@ import com.example.snowtam.Model.Injection;
 import com.example.snowtam.Model.Recherche;
 import com.example.snowtam.Model.RechercheVM;
 import com.example.snowtam.Model.VmFactory;
+import com.example.snowtam.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
@@ -57,7 +57,7 @@ public class Accueil extends AppCompatActivity {
 
                 }
                 if(item.getTitle().equals(getString(R.string.Historic))){
-                    Intent i = new Intent(Accueil.this,Historique.class);
+                    Intent i = new Intent(Accueil.this, Historique.class);
                     startActivity(i);
                 }
                 return false;
@@ -111,7 +111,7 @@ public class Accueil extends AppCompatActivity {
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Accueil.this,Affsnowtam.class);
+                Intent i = new Intent(Accueil.this, Affsnowtam.class);
                 i.putExtra("List",arrayList);
                 i.putExtra("id",0);
                 Gson gson = new Gson();

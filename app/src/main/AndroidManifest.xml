@@ -19,9 +19,9 @@
         android:roundIcon="@mipmap/lanceur_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SnowTam">
-        <activity android:name=".AffMap"></activity>
-        <activity android:name=".Historique" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Controler.AffMap"></activity>
+        <activity android:name=".Controler.Historique" />
+        <activity android:name=".Controler.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,7 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".Accueil" />
+        <activity android:name=".Controler.Accueil" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -50,10 +50,10 @@
             android:value="AIzaSyAH0Y-5JeLtfKju3yUlGMQQb1riLd51-7E" />
 
         <activity
-            android:name=".Affariport"
+            android:name=".Controler.Affariport"
             android:label="@string/title_activity_affariport" />
         <activity
-            android:name=".Affsnowtam"
+            android:name=".Controler.Affsnowtam"
             android:label="@string/title_activity_affsnowtam"
             android:theme="@style/Theme.SnowTam.NoActionBar" />
 
@@ -63,7 +63,7 @@
             android:exported="true"
             tools:ignore="Instantiatable" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Controler.MainActivity" />
     </application>
 
 </manifest>

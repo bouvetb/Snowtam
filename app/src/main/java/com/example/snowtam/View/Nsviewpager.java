@@ -1,4 +1,4 @@
-package com.example.snowtam;
+package com.example.snowtam.View;
 
 import android.content.Context;
 import android.util.AttributeSet;

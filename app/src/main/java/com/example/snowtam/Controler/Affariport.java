@@ -1,10 +1,11 @@
-package com.example.snowtam;
+package com.example.snowtam.Controler;
 
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
 import com.example.snowtam.Model.Geometry;
+import com.example.snowtam.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

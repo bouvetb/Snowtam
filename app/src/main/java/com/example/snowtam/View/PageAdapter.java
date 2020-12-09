@@ -1,4 +1,4 @@
-package com.example.snowtam;
+package com.example.snowtam.View;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.android.volley.Response;
-import com.example.snowtam.Model.DataSearchSnow;
-import com.example.snowtam.Model.SnowTam;
+import com.example.snowtam.Controler.Snowtamcode;
+import com.example.snowtam.Controler.Snowtamdecode;
+import com.example.snowtam.R;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
