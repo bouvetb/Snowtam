@@ -86,7 +86,7 @@ public class Snowtamcode extends Fragment {
         final Response.ErrorListener errorListener = error -> {
             Log.e("Erreur","erreur");
         };
-        SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
+        //SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
 
 
         return v;
