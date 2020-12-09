@@ -42,4 +42,26 @@
     <string name="Accueil">Accueil</string>
     <string name="Help">Aide</string>
     <string name="Historic">Historique</string>
+    <string name="infoNom">Nom</string>
+    <string name="infoDate">Date</string>
+    <string name="infoPiste">Piste</string>
+    <string name="PisteLeft"> Gauche</string>
+    <string name="PisteRight"> Droite</string>
+    <string name="infoLongueur">Longueur déblayée</string>
+    <string name="infoLargeur">Largeur déblayée</string>
+    <string name="infoCondition">Conditions</string>
+    <string name="CLEAR_AND_DRY">PISTE DÉBLAYÉE ET SÈCHE</string>
+    <string name="DAMP">HUMIDE</string>
+    <string name="WET">MOUILLÉE OU FLAQUES D\'EAU</string>
+    <string name="RIME">GIVRE OU GELÉE BLANCHE - épaisseur normalement moins de 1 mm</string>
+    <string name="DRY">NEIGE SÈCHE</string>
+    <string name="WET_SNOW">NEIGE MOUILLÉE</string>
+    <string name="SLUSH">NEIGE FONDANTE</string>
+    <string name="ICE">GLACE</string>
+    <string name="COMPACTED"> NEIGE COMPACTÉE</string>
+    <string name="FROZEN">ORNIÈRES ET ARÊTES</string>
+    <string name="PremierTiers"> Début de piste </string>
+    <string name="DeuxiemeTiers"> Milieu de piste </string>
+    <string name="TroisiemeTiers"> Fin de piste </string>
 </resources>
+

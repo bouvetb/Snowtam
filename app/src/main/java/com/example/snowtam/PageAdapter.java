@@ -17,11 +17,13 @@ public class PageAdapter extends FragmentPagerAdapter {
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_2, R.string.tab_text_1};
     private final Context mContext;
     private final String airport;
-    public PageAdapter(@NonNull FragmentManager fm, Context mContext,String airport) {
+    private final String NameAirport;
+    public PageAdapter(@NonNull FragmentManager fm, Context mContext,String airport,String NameAirport) {
         super(fm);
         this.mContext = mContext;
         this.airport = airport;
         Log.e("airport",airport);
+        this.NameAirport =  NameAirport;
     }
 
     @NonNull
@@ -32,7 +34,7 @@ public class PageAdapter extends FragmentPagerAdapter {
         switch (position){
             case 0 :
 
-                return Snowtamdecode.newInstance(airport);
+                return Snowtamdecode.newInstance(airport,this.NameAirport);
             case 1 :
                 return Snowtamcode.newInstance(airport);
             default:

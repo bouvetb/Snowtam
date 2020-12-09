@@ -58,8 +58,7 @@ public class Snowtamcode extends Fragment {
             }
 
             String texte = snow.getAll();
-            tv.setText(texte);
-            for(int i=65;i<=84;i++)
+            for(int i=65;i<=84;i++) // de A a T
             {
                 int j = i;
                 char lettre = (char)i;

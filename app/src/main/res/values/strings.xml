@@ -41,5 +41,27 @@
     <string name="Accueil">Home</string>
     <string name="Help">Help</string>
     <string name="Historic">Historic</string>
+    <string name="infoNom">Name</string>
+    <string name="infoDate">Date</string>
+    <string name="infoPiste">Runway</string>
+    <string name="PisteLeft"> Left</string>
+    <string name="PisteRight"> Right</string>
+    <string name="infoLongueur">Cleared length</string>
+    <string name="infoLargeur">Cleared Width</string>
+    <string name="infoCondition">Conditions</string>
+    <string name="CLEAR_AND_DRY">CLEAR AND DRY</string>
+    <string name="DAMP">DAMP</string>
+    <string name="WET">WET or WATER PATCHES</string>
+    <string name="RIME">RIME OR FROST COVERED</string>
+    <string name="DRY">DRY SNOW</string>
+    <string name="WET_SNOW">WET SNOW</string>
+    <string name="SLUSH">SLUSH</string>
+    <string name="ICE">ICE</string>
+    <string name="COMPACTED">COMPACTED OR ROLLED SNOW</string>
+    <string name="FROZEN">FROZEN RUTS OR RIDGES</string>
+    <string name="PremierTiers"> Threshold </string>
+    <string name="DeuxiemeTiers"> Mid runway </string>
+    <string name="TroisiemeTiers"> Roll out </string>
 
 </resources>
+

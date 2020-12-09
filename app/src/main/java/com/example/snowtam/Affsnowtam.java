@@ -33,6 +33,7 @@ import java.util.ArrayList;
 public class Affsnowtam extends AppCompatActivity {
     Geometry coord ;
     BottomNavigationView bottomNavigationView;
+    String NameAirport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class Affsnowtam extends AppCompatActivity {
         final Response.Listener<DataSearchAirport[]> rep =response -> {
             tv.setText(response[0].getAirportName());
             this.coord = response[0].getGeometry();
+            this.NameAirport = response[0].getAirportName();
         };
         final Response.ErrorListener errorListener= error -> {
             Log.e("Error", "searchAirport onErrorResponse: " + error.getMessage());
@@ -84,7 +86,7 @@ public class Affsnowtam extends AppCompatActivity {
 
 
 
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),this,aero.get(Index));
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),this,aero.get(Index),this.NameAirport);
         Nsviewpager viewPager =(Nsviewpager) findViewById(R.id.view_pager);
         viewPager.setAdapter(pageAdapter);
         viewPager.setEnableSwipe(false);
