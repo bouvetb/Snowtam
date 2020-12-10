@@ -160,6 +160,7 @@ public class Snowtamdecode extends Fragment {
             largeur = largeur.replace("R",getString(R.string.PisteRight));
 
             String condition = info[5];
+            condition = condition.replaceAll(" ", "");
             String tier1 = condition.substring(0,1);
             String tier2 = condition.substring(2,3);
             String tier3 = condition.substring(4,5);
@@ -173,7 +174,7 @@ public class Snowtamdecode extends Fragment {
                             tab[2]+" : "+ piste +"\n"+ //c
                             tab[3]+" : "+ info[3] +"m\n"+ //d
                             tab[4]+" : "+ largeur +"m\n"+ //e
-                            tab[5]+" : "+ getString(R.string.PremierTiers) + tier1 + "/" + getString(R.string.DeuxiemeTiers) + tier2 + "/"+  getString(R.string.TroisiemeTiers) + tier3 //f
+                            tab[5]+" : "+ getString(R.string.PremierTiers)+":" + tier1 + " / " + getString(R.string.DeuxiemeTiers)+":" + tier2 + " / "+  getString(R.string.TroisiemeTiers)+":" + tier3 //f
                     );
             
 
