@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Historic"/>
+        android:text="@string/Historic"
+        android:textSize="100px"/>
     <ListView
         android:id="@+id/list_recherches"
         android:layout_width="match_parent"

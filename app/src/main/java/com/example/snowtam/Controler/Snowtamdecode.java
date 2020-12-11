@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.volley.Response;
+import com.example.snowtam.Model.DataSearchAirport;
 import com.example.snowtam.Model.DataSearchSnow;
 import com.example.snowtam.Model.SnowTam;
 import com.example.snowtam.R;
@@ -99,42 +100,60 @@ public class Snowtamdecode extends Fragment {
         View v = inflater.inflate(R.layout.fragment_snowtamdecode, container, false);
         TextView tv = (TextView) v.findViewById(R.id.snowtamdecode);
 
+        final Response.Listener<DataSearchAirport[]> rep1 = response -> {
+            if (response != null)
+            {
+                this.NameAirport = response[0].getAirportName();
+            }
+        };
+        final Response.ErrorListener errorListener1= error -> {
+            Log.e("Error", "searchAirport onErrorResponse: " + error.getMessage());
+        };
+        //SnowTam.getAirport(v.getContext(), airport,rep1,errorListener1);
+        this.NameAirport = "Gardermoen";
 
         final Response.Listener<DataSearchSnow[]> rep = response -> {
 
-            DataSearchSnow snow = null;
-            int y =0;
-            while(snow == null){
-                if(response[y].getEntity().equals("")){
-                    snow = response[y];
-                }
-                y++;
-            }
-            String texte = snow.getAll();
-
-
-            String [] tab = {getString(R.string.infoNom),getString(R.string.infoDate),getString(R.string.infoPiste),getString(R.string.infoLongueur),getString(R.string.infoLargeur),getString(R.string.infoCondition)};
-            String [] info = {"","","","","",""};
-
-            for(int i=65;i<=70;i++)//de A a F
+            if(response == null)
             {
-                int j = i;
-                char lettre = (char)i;
-                int premier = texte.indexOf(lettre+") ")+2;
-                int deuxieme;
-
-                do
-                {
-                    j++;
-                    char lettreArret = (char)(j);
-                    deuxieme = texte.indexOf(lettreArret+")");
-                }while(deuxieme == -1);
-
-                i = j-1;
-                String sub = texte.substring(premier, deuxieme);
-                info[(int)lettre - 65] = sub;
-                //System.out.println(sub);
+                tv.setText(getString(R.string.NoResponse));
             }
+            else {
+                DataSearchSnow snow = null;
+                int y = 0;
+                while (snow == null && y < response.length) {
+                    if (response[y].getEntity().equals("")) {
+                        snow = response[y];
+                    }
+                    y++;
+                }
+                if (snow == null) {
+                    tv.setText(getString(R.string.NoSnowtam));
+                } else {
+                    String texte = snow.getAll();
+
+
+                    String[] tab = {getString(R.string.infoNom), getString(R.string.infoDate), getString(R.string.infoPiste), getString(R.string.infoLongueur), getString(R.string.infoLargeur), getString(R.string.infoCondition)};
+                    String[] info = {"", "", "", "", "", ""};
+
+                    for (int i = 65; i <= 70; i++)//de A a F
+                    {
+                        int j = i;
+                        char lettre = (char) i;
+                        int premier = texte.indexOf(lettre + ") ") + 2;
+                        int deuxieme;
+
+                        do {
+                            j++;
+                            char lettreArret = (char) (j);
+                            deuxieme = texte.indexOf(lettreArret + ")");
+                        } while (deuxieme == -1);
+
+                        i = j - 1;
+                        String sub = texte.substring(premier, deuxieme);
+                        info[(int) lettre - 65] = sub;
+                        //System.out.println(sub);
+                    }
                     /*
         for(int i=0;i<=info.length;i++)
         {
@@ -142,47 +161,117 @@ public class Snowtamdecode extends Fragment {
 
         }
         */
-            //System.out.println(info[1]);
-            String sdate = info[1];
-            Date date = null;
-            try {
-                 date = new SimpleDateFormat("MMddHHmm").parse(sdate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            //System.out.println(date);
-            String piste = info[2];
-            piste = piste.replace("L",getString(R.string.PisteLeft));
-            piste = piste.replace("R",getString(R.string.PisteRight));
-            //System.out.println(piste);
-            String largeur = info[4];
-            largeur = largeur.replace("L",getString(R.string.PisteLeft));
-            largeur = largeur.replace("R",getString(R.string.PisteRight));
+                    //System.out.println(info[1]);
+                    String sdate = info[1];
+                    Date date = null;
+                    try {
+                        date = new SimpleDateFormat("MMddHHmm").parse(sdate);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    //System.out.println(date);
+                    String piste = info[2];
+                    piste = piste.replace("L", getString(R.string.PisteLeft));
+                    piste = piste.replace("R", getString(R.string.PisteRight));
+                    //System.out.println(piste);
+                    String largeur = info[4];
+                    largeur = largeur.replace("L", getString(R.string.PisteLeft));
+                    largeur = largeur.replace("R", getString(R.string.PisteRight));
 
-            String condition = info[5];
-            condition = condition.replaceAll(" ", "");
-            String tier1 = condition.substring(0,1);
-            String tier2 = condition.substring(2,3);
-            String tier3 = condition.substring(4,5);
-            tier1 = conditionsTiers(tier1);
-            tier2 = conditionsTiers(tier2);
-            tier3 = conditionsTiers(tier3);
+                    String condition = info[5];
+                    condition = condition.replaceAll(" ", "");
+                    String tier1 = condition.substring(0, 1);
+                    String tier2 = condition.substring(2, 3);
+                    String tier3 = condition.substring(4, 5);
+                    tier1 = conditionsTiers(tier1);
+                    tier2 = conditionsTiers(tier2);
+                    tier3 = conditionsTiers(tier3);
 
 
-            tv.setText(tab[0]+" : "+ this.NameAirport +"\n"+ //a
-                            tab[1]+" : "+ date +"\n"+ //b
-                            tab[2]+" : "+ piste +"\n"+ //c
-                            tab[3]+" : "+ info[3] +"m\n"+ //d
-                            tab[4]+" : "+ largeur +"m\n"+ //e
-                            tab[5]+" : "+ getString(R.string.PremierTiers)+":" + tier1 + " / " + getString(R.string.DeuxiemeTiers)+":" + tier2 + " / "+  getString(R.string.TroisiemeTiers)+":" + tier3 //f
+                    tv.setText(tab[0] + " : " + this.NameAirport + "\n" + //a
+                            tab[1] + " : " + date + "\n" + //b
+                            tab[2] + " : " + piste + "\n" + //c
+                            tab[3] + " : " + info[3] + "m\n" + //d
+                            tab[4] + " : " + largeur + "m\n" + //e
+                            tab[5] + " : " + getString(R.string.PremierTiers) + ":" + tier1 + " / " + getString(R.string.DeuxiemeTiers) + ":" + tier2 + " / " + getString(R.string.TroisiemeTiers) + ":" + tier3 //f
                     );
-            
 
+                }
+            }
         };
         final Response.ErrorListener errorListener = error -> {
             Log.e("Erreur","erreur");
         };
-       SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
+       //SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
+        String texte = getString(R.string.SnowtamDure);
+
+
+        String[] tab = {getString(R.string.infoNom), getString(R.string.infoDate), getString(R.string.infoPiste), getString(R.string.infoLongueur), getString(R.string.infoLargeur), getString(R.string.infoCondition)};
+        String[] info = {"", "", "", "", "", ""};
+
+        for (int i = 65; i <= 70; i++)//de A a F
+        {
+            int j = i;
+            char lettre = (char) i;
+            int premier = texte.indexOf(lettre + ") ") + 2;
+            int deuxieme;
+
+            do {
+                j++;
+                char lettreArret = (char) (j);
+                deuxieme = texte.indexOf(lettreArret + ")");
+            } while (deuxieme == -1);
+
+            i = j - 1;
+            String sub = texte.substring(premier, deuxieme);
+            info[(int) lettre - 65] = sub;
+            //System.out.println(sub);
+        }
+                    /*
+        for(int i=0;i<=info.length;i++)
+        {
+            System.out.println(tab[i] + " = " + info[i]);
+
+        }
+        */
+        //System.out.println(info[1]);
+        String sdate = info[1];
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("MMddHHmm").parse(sdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //System.out.println(date);
+        String piste = info[2];
+        piste = piste.replace("L", getString(R.string.PisteLeft));
+        piste = piste.replace("R", getString(R.string.PisteRight));
+        //System.out.println(piste);
+        String largeur = info[4];
+        largeur = largeur.replace("L", getString(R.string.PisteLeft));
+        largeur = largeur.replace("R", getString(R.string.PisteRight));
+
+        String condition = info[5];
+        condition = condition.replaceAll(" ", "");
+        String tier1 = condition.substring(0, 1);
+        String tier2 = condition.substring(2, 3);
+        String tier3 = condition.substring(4, 5);
+        tier1 = conditionsTiers(tier1);
+        tier2 = conditionsTiers(tier2);
+        tier3 = conditionsTiers(tier3);
+
+
+        tv.setText(tab[0] + " : " + this.NameAirport + "\n" + //a
+                tab[1] + " : " + date + "\n" + //b
+                tab[2] + " : " + piste + "\n" + //c
+                tab[3] + " : " + info[3] + "m\n" + //d
+                tab[4] + " : " + largeur + "m\n" + //e
+                tab[5] + " : " + getString(R.string.PremierTiers) + ":" + tier1 + " / " + getString(R.string.DeuxiemeTiers) + ":" + tier2 + " / " + getString(R.string.TroisiemeTiers) + ":" + tier3 //f
+        );
+
+
+
+
         return v;
     }
 }

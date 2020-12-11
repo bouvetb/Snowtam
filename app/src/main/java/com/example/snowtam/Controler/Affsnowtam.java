@@ -74,15 +74,21 @@ public class Affsnowtam extends AppCompatActivity {
         ArrayList<String> aero = getIntent().getStringArrayListExtra("List");
         int Index = getIntent().getIntExtra("id",0);
         final Response.Listener<DataSearchAirport[]> rep =response -> {
-            tv.setText(response[0].getAirportName());
-            this.coord = response[0].getGeometry();
-            this.NameAirport = response[0].getAirportName();
+            if(response != null) {
+                tv.setText(response[0].getAirportName());
+                this.coord = response[0].getGeometry();
+                this.NameAirport = response[0].getAirportName();
+            }
+            else
+            {
+                tv.setText(getString(R.string.NoResponse));
+            }
         };
         final Response.ErrorListener errorListener= error -> {
             Log.e("Error", "searchAirport onErrorResponse: " + error.getMessage());
         };
-        SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
-
+        //SnowTam.getAirport(this, aero.get(Index),rep,errorListener);
+        tv.setText("Gardermoen");
 
 
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),this,aero.get(Index),this.NameAirport);

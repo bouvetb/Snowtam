@@ -48,47 +48,72 @@ public class Snowtamcode extends Fragment {
         TextView tv = (TextView) v.findViewById(R.id.snowtamcode);
         final Response.Listener<DataSearchSnow[]> rep = response -> {
             //tv.setText(response[0].getAll());// affichage brut moche
-
-            int y=0;
-            DataSearchSnow snow = null;
-            while(snow == null){
-                if(response[y].getEntity().equals("")){
-                   snow = response[y];
-                }
-                y++;
-            }
-
-            String texte = snow.getAll();
-            for(int i=65;i<=84;i++) // de A a T
+            if(response == null)
             {
-                int j = i;
-                char lettre = (char)i;
-                int premier = texte.indexOf(lettre+") ");
-                int deuxieme;
-                do
-                {
-                    j++;
-                    if( j < 84 )
-                    {
-                        char lettreArret = (char)(j);
-                        deuxieme = texte.indexOf(lettreArret+")");
+                tv.setText(getString(R.string.NoResponse));
+            }
+            else {
+                int y = 0;
+                DataSearchSnow snow = null;
+                while (snow == null && y < response.length) {
+                    if (response[y].getEntity().equals("")) {
+                        snow = response[y];
                     }
-                    else
+                    y++;
+                }
+                if (snow == null) {
+                    tv.setText(getString(R.string.NoSnowtam));
+                } else {
+                    String texte = snow.getAll();
+                    for (int i = 65; i <= 84; i++) // de A a T
                     {
-                        deuxieme = texte.indexOf("CREATED");
+                        int j = i;
+                        char lettre = (char) i;
+                        int premier = texte.indexOf(lettre + ") ");
+                        int deuxieme;
+                        do {
+                            j++;
+                            if (j < 84) {
+                                char lettreArret = (char) (j);
+                                deuxieme = texte.indexOf(lettreArret + ")");
+                            } else {
+                                deuxieme = texte.indexOf("CREATED");
+                            }
+                        } while (deuxieme == -1);
+                        i = j - 1;
+                        String sub = texte.substring(premier, deuxieme);
+                        tv.setText(tv.getText() + sub);
                     }
-                }while(deuxieme == -1);
-                i = j-1;
-                String sub = texte.substring(premier, deuxieme);
-                tv.setText(tv.getText()+sub);
+                }
             }
         };
         final Response.ErrorListener errorListener = error -> {
             Log.e("Erreur","erreur");
         };
-        SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
-
+       // SnowTam.getSnowtam(v.getContext(),airport,rep,errorListener);
+        String texte = getString(R.string.SnowtamDure);
+        for (int i = 65; i <= 84; i++) // de A a T
+        {
+            int j = i;
+            char lettre = (char) i;
+            int premier = texte.indexOf(lettre + ") ");
+            int deuxieme;
+            do {
+                j++;
+                if (j < 84) {
+                    char lettreArret = (char) (j);
+                    deuxieme = texte.indexOf(lettreArret + ")");
+                } else {
+                    deuxieme = texte.indexOf("CREATED");
+                }
+            } while (deuxieme == -1);
+            i = j - 1;
+            String sub = texte.substring(premier, deuxieme);
+            tv.setText(tv.getText() + sub);
+        }
 
         return v;
     }
+
+
 }
