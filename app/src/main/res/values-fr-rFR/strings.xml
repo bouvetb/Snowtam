@@ -11,8 +11,8 @@
     <string name="menu_home">SnowTam</string>
     <string name="menu_gallery">Aide</string>
     <string name="menu_slideshow">Historique</string>
-    <string name="textViewConsigne">Veuillez entrer des codes IOCA puis appuyer sur valider</string>
-    <string name="editTextIOCA">Code IOCA</string>
+    <string name="textViewConsigne">Veuillez entrer des codes OACI puis appuyer sur valider</string>
+    <string name="editTextIOCA">Code OACI</string>
     <string name="buttonValidate">Valider</string>
     <string name="buttonAdd">Ajouter</string>
     <string name="title_activity_affsnowtam">Affsnowtam</string>
